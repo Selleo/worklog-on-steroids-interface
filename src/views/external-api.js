@@ -1,5 +1,11 @@
 import React, { useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
+import { gql, ApolloClient, InMemoryCache } from "@apollo/client";
+
+const client = new ApolloClient({
+  uri: "http://localhost:4000/api/ql",
+  cache: new InMemoryCache(),
+});
 
 const ExternalApi = () => {
   const [message, setMessage] = useState("");
@@ -39,6 +45,32 @@ const ExternalApi = () => {
     }
   };
 
+  const callSecureApiGraphQL = async () => {
+    try {
+      const token = await getAccessTokenSilently({
+        audience: "graphql-api",
+      });
+
+      const res = await client.query({
+        context: {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        },
+        query: gql`
+          query GetProfile {
+            getProfile {
+              velocity
+            }
+          }
+        `,
+      });
+      setMessage(JSON.stringify(res.data.profileMany));
+    } catch (error) {
+      setMessage(error.message);
+    }
+  };
+
   return (
     <div className="container">
       <h1>External API</h1>
@@ -61,6 +93,13 @@ const ExternalApi = () => {
           onClick={callSecureApi}
         >
           Get Protected Message
+        </button>
+        <button
+          type="button"
+          className="btn btn-primary"
+          onClick={callSecureApiGraphQL}
+        >
+          Get Protected GraphQL
         </button>
       </div>
       {message && (
