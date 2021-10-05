@@ -3,7 +3,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { gql, ApolloClient, InMemoryCache } from "@apollo/client";
 
 const client = new ApolloClient({
-  uri: "http://localhost:4000/api/ql",
+  uri: "https://worklog-on-steroids.herokuapp.com/api/ql",
   cache: new InMemoryCache(),
 });
 
@@ -14,7 +14,9 @@ const ExternalApi = () => {
 
   const callApi = async () => {
     try {
-      const response = await fetch(`http://localhost:4000/api/public`);
+      const response = await fetch(
+        `https://worklog-on-steroids.herokuapp.com/api/public`
+      );
 
       const responseData = await response.json();
 
@@ -31,11 +33,14 @@ const ExternalApi = () => {
       });
       console.log(token);
 
-      const response = await fetch(`http://localhost:4000/api/private`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const response = await fetch(
+        `https://worklog-on-steroids.herokuapp.com/api/private`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
 
       const responseData = await response.json();
 
@@ -65,7 +70,7 @@ const ExternalApi = () => {
           }
         `,
       });
-      setMessage(JSON.stringify(res.data.profileMany));
+      setMessage(JSON.stringify(res.data));
     } catch (error) {
       setMessage(error.message);
     }
