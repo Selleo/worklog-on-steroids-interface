@@ -6,7 +6,12 @@ const LoginButton = () => {
   return (
     <button
       className="btn btn-primary btn-block"
-      onClick={() => loginWithRedirect()}
+      onClick={() =>
+        loginWithRedirect({
+          audience: "graphql-api",
+          scope: "read",
+        })
+      }
     >
       Log In
     </button>

@@ -10,7 +10,7 @@ const client = new ApolloClient({
 const ExternalApi = () => {
   const [message, setMessage] = useState("");
 
-  const { getAccessTokenSilently } = useAuth0();
+  const { getAccessTokenSilently, getAccessTokenWithPopup } = useAuth0();
 
   const callApi = async () => {
     try {
@@ -30,6 +30,7 @@ const ExternalApi = () => {
     try {
       const token = await getAccessTokenSilently({
         audience: "graphql-api",
+        scope: "read",
       });
       console.log(token);
 
@@ -46,6 +47,7 @@ const ExternalApi = () => {
 
       setMessage(responseData.message);
     } catch (error) {
+      console.log(error);
       setMessage(error.message);
     }
   };
