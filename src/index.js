@@ -7,10 +7,10 @@ import Auth0ProviderWithHistory from "./providerWithHistory";
 import "./index.css";
 
 ReactDOM.render(
-  <Router>
-    <Auth0ProviderWithHistory>
+  <Auth0ProviderWithHistory>
+    <Router>
       <App />
-    </Auth0ProviderWithHistory>
-  </Router>,
+    </Router>
+  </Auth0ProviderWithHistory>,
   document.getElementById("root")
 );

@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "private": true,
   "dependencies": {
-    "@apollo/client": "^3.3.12",
+    "@apollo/client": "^3.4.16",
     "@auth0/auth0-react": "^1.8.0",
-    "graphql": "^15.5.0",
+    "graphql": "^15.6.1",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
     "react-router-dom": "^5.2.0",

@@ -5,9 +5,10 @@ import { NavBar, Footer } from "./components";
 import { Home, Profile, ExternalApi } from "./views";
 import Loading from "./components/loading";
 import "./app.css";
+import "./apollo-client";
 
 const App = () => {
-  const { isLoading, error } = useAuth0();
+  const { isLoading } = useAuth0();
 
   if (isLoading) {
     return <Loading />;

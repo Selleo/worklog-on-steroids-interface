@@ -10,7 +10,7 @@ const client = new ApolloClient({
 const ExternalApi = () => {
   const [message, setMessage] = useState("");
 
-  const { getAccessTokenSilently, getAccessTokenWithPopup } = useAuth0();
+  const { getAccessTokenSilently } = useAuth0();
 
   const callApi = async () => {
     try {
