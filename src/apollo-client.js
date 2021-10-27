@@ -39,4 +39,4 @@ const getNewClient = (username) => {
   return client;
 };
 
-getNewClient("w.bozek");
+// getNewClient("w.bozek");

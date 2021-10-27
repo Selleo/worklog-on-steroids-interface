@@ -2,15 +2,15 @@ import React from "react";
 import ReactDOM from "react-dom";
 import App from "./app";
 import { BrowserRouter as Router } from "react-router-dom";
-import Auth0ProviderWithHistory from "./providerWithHistory";
+import Auth0Provider from "./Auth0Provider";
 
 import "./index.css";
 
 ReactDOM.render(
-  <Auth0ProviderWithHistory>
-    <Router>
+  <Router>
+    <Auth0Provider>
       <App />
-    </Router>
-  </Auth0ProviderWithHistory>,
+    </Auth0Provider>
+  </Router>,
   document.getElementById("root")
 );
