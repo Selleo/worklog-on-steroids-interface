@@ -67,7 +67,7 @@ const ExternalApi = () => {
         query: gql`
           query GetProfile {
             getProfile {
-              velocity
+              _id
             }
           }
         `,
